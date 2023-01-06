@@ -9,7 +9,7 @@ function App() {
           <img src={logo} />
         </div>
         <h1>Learn & Master GitHub Actions</h1>
-        <h2>Changed this line to see if caching dependencies speeds up the workflow's run speed.</h2>
+        <h2>Changed this line to see if caching dependencies speeds up the workflow run speed.</h2>
       </header>
       <MainContent />
     </>
