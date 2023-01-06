@@ -36,5 +36,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Get build artifacts # to get output which is saved
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+      - name: Output contents # list files and folders in the path
+        run: ls
       - name: Deploy
         run: echo "Deploying..."
