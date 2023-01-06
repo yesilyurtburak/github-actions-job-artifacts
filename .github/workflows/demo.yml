@@ -29,7 +29,7 @@ jobs:
         run: npm run build
       - name: Publish JS filename # assume that we need the output js file's name
         id: publish # custom name, we need this id to access it in the 'outputs' section above.
-        run: find dist/assets/*.js -type -f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';' # basic linux command that finds the file and execute the following 'echo command' which creates key:value pair and writes it into $GITHUB_OUTPUT environment variable.
+        run: find dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';' # basic linux command that finds the file and execute the following 'echo command' which creates key:value pair and writes it into $GITHUB_OUTPUT environment variable.
       - name: Upload artifacts # to save output
         uses: actions/upload-artifact@v3
         with:
