@@ -9,6 +9,14 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: Cache dependencies # cache dependencies to speed up repeated processes in workflow.
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm # This location depends on OS and programming language. Look at documentation.
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }} 
+          # key -> filename.
+          # We will use this filename later on to get cached data.
+          # find package-lock.json file in any location. Then generate a hashcode using that file. Whenever dependency file changes a new hash code be generated.
       - name: Install dependencies
         run: npm ci
       - name: Lint code
@@ -23,6 +31,14 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: Cache dependencies # cache dependencies to speed up repeated processes in workflow.
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm # This location depends on OS and programming language. Look at documentation.
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }} 
+          # key -> filename.
+          # We will use this filename later on to get cached data.
+          # find package-lock.json file in any location. Then generate a hashcode using that file. Whenever dependency file changes a new hash code be generated.
       - name: Install dependencies
         run: npm ci
       - name: Build website
